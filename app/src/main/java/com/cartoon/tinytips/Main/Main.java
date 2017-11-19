@@ -1,4 +1,4 @@
-package com.cartoon.tinytips;
+package com.cartoon.tinytips.Main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -7,7 +7,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
+
+import com.cartoon.tinytips.AddNote.AddNote;
+import com.cartoon.tinytips.HomePage.HomePage;
+import com.cartoon.tinytips.MyAccount.MyAccount;
+import com.cartoon.tinytips.R;
 
 public class Main extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     //主页面，内有首页，发现（未实现），关注（未实现），新建笔记，我的页面，页面都为fragment，切换fragment实现功能

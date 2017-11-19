@@ -15,7 +15,7 @@
         android:layout_weight="1.5"
         android:layout_marginTop="2dp"
         android:layout_gravity="bottom"
-        app:menu="@menu/navigation"
+        app:menu="@menu/mainmenu"
         android:background="#FFFFFF"
         android:id="@+id/mainBottomNavigationView"
         android:layout_alignParentBottom="true"/>

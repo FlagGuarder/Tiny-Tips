@@ -1,10 +1,12 @@
-package com.cartoon.tinytips;
+package com.cartoon.tinytips.AddNote;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.cartoon.tinytips.R;
 
 /**
  * Created by cartoon on 2017/10/25.
