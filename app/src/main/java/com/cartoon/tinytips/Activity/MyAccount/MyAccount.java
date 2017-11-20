@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.MyAccount;
+package com.cartoon.tinytips.Activity.MyAccount;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -19,6 +19,10 @@ public class MyAccount extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.myaccount, container, false);
+        initView(view);
         return view;
+    }
+    private void initView(View view){
+
     }
 }

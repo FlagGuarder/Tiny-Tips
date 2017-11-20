@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.Main;
+package com.cartoon.tinytips.Activity.Main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -8,9 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.cartoon.tinytips.AddNote.AddNote;
-import com.cartoon.tinytips.HomePage.HomePage;
-import com.cartoon.tinytips.MyAccount.MyAccount;
+import com.cartoon.tinytips.Activity.AddNote;
+import com.cartoon.tinytips.Activity.HomePage.HomePage;
+import com.cartoon.tinytips.Activity.MyAccount.MyAccount;
 import com.cartoon.tinytips.R;
 
 public class Main extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
