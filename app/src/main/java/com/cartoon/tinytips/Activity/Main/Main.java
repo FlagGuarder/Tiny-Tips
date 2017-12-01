@@ -2,11 +2,13 @@ package com.cartoon.tinytips.Activity.Main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.cartoon.tinytips.Activity.AddNote;
 import com.cartoon.tinytips.Activity.HomePage.HomePage;
@@ -49,6 +51,18 @@ public class Main extends AppCompatActivity implements BottomNavigationView.OnNa
             }
         }
         return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        switch (requestCode){
+            case 1:{
+                if(resultCode==RESULT_OK){
+                    int returnData=data.getIntExtra("data_return",0);
+                }
+                Toast.makeText(this,""+1,Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
     }
     private void switchFragment(int flag){
         //跳转Fragment

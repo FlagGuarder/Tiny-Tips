@@ -12,17 +12,28 @@ public class Note implements Serializable{
     //笔记类
     private String title;           //标题
     private String  wordDetails;         //文字性内容
-    private Image imageDetails;     //图像式内容
-    private String classify[];      //笔记的分类
-    private String date[];           //笔记创建的日期
+    private int imageDetails1;     //图像式内容1
+    private int imageDetails2;     //图像式内容3
+    private int imageDetails3;     //图像式内容2
+    private String classify1;      //笔记的分类1
+    private String classify2;      //笔记的分类2
+    private String classify3;      //笔记的分类3
+    private String date;           //笔记创建的日期
+
     private boolean isCollect;       //是否收藏
     private String author;           //笔记的发布人
     public Note
-            (String title,String wordDetails,Image imageDetails,String classify[],String date[],boolean isCollect,String author){
+            (String title,String wordDetails,int imageDetails1,int imageDetails2,
+             int imageDetails3,String classify1,String classify2,String classify3,String date,
+             boolean isCollect,String author){
         this.title=title;
         this.wordDetails=wordDetails;
-        this.imageDetails=imageDetails;
-        this.classify=classify;
+        this.imageDetails1=imageDetails1;
+        this.imageDetails2=imageDetails2;
+        this.imageDetails3=imageDetails3;
+        this.classify1=classify1;
+        this.classify2=classify2;
+        this.classify3=classify3;
         this.date=date;
         this.isCollect=isCollect;
         this.author=author;
@@ -36,15 +47,31 @@ public class Note implements Serializable{
         return wordDetails;
     }
 
-    public Image getImageDetails() {
-        return imageDetails;
+    public int getImageDetails1() {
+        return imageDetails1;
     }
 
-    public String[] getClassify() {
-        return classify;
+    public int getImageDetails2() {
+        return imageDetails2;
     }
 
-    public String[] getDate() {
+    public int getImageDetails3() {
+        return imageDetails3;
+    }
+
+    public String getClassify1() {
+        return classify1;
+    }
+
+    public String getClassify2() {
+        return classify2;
+    }
+
+    public String getClassify3() {
+        return classify3;
+    }
+
+    public String getDate() {
         return date;
     }
 
@@ -64,15 +91,31 @@ public class Note implements Serializable{
         this.wordDetails = wordDetails;
     }
 
-    public void setImageDetails(Image imageDetails) {
-        this.imageDetails = imageDetails;
+    public void setImageDetails1(int imageDetails1) {
+        this.imageDetails1 = imageDetails1;
     }
 
-    public void setClassify(String[] classify) {
-        this.classify = classify;
+    public void setImageDetails2(int imageDetails2) {
+        this.imageDetails2 = imageDetails2;
     }
 
-    public void setDate(String[] date) {
+    public void setImageDetails3(int imageDetails3) {
+        this.imageDetails3 = imageDetails3;
+    }
+
+    public void setClassify1(String classify1) {
+        this.classify1 = classify1;
+    }
+
+    public void setClassify2(String classify2) {
+        this.classify2 = classify2;
+    }
+
+    public void setClassify3(String classify3) {
+        this.classify3 = classify3;
+    }
+
+    public void setDate(String date) {
         this.date = date;
     }
 
