@@ -72,16 +72,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
                 Note note=noteList.get(position);
-                /*Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
-                Activity activity=(Activity)context;
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                ((Activity) context).startActivityForResult(intent,1);
-                activity.finish();*/
                 Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
                 Activity activity=(Activity)context;
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ((Activity) context).startActivity(intent);
-                activity.finish();
             }
         });
         holder.title.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +86,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
                 Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
                 Activity activity=(Activity)context;
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                ((Activity) context).startActivityForResult(intent,1);
+                ((Activity) context).startActivity(intent);
                 activity.finish();
             }
         });
@@ -101,6 +95,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
                 Note note=noteList.get(position);
+                Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
+                Activity activity=(Activity)context;
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ((Activity) context).startActivity(intent);
             }
         });
         holder.imageDetails.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +106,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
                 Note note=noteList.get(position);
+                Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
+                Activity activity=(Activity)context;
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ((Activity) context).startActivity(intent);
             }
         });
         holder.classify1.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +117,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
                 Note note=noteList.get(position);
+                Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
+                Activity activity=(Activity)context;
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ((Activity) context).startActivity(intent);
             }
         });
         holder.classify2.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +128,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
                 Note note=noteList.get(position);
+                Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
+                Activity activity=(Activity)context;
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ((Activity) context).startActivity(intent);
             }
         });
         holder.classify3.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +139,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
                 Note note=noteList.get(position);
+                Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
+                Activity activity=(Activity)context;
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ((Activity) context).startActivity(intent);
             }
         });
         return holder;

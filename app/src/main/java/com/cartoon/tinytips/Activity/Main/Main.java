@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -21,13 +22,17 @@ public class Main extends AppCompatActivity implements BottomNavigationView.OnNa
 
     private BottomNavigationView bottomNavigationView;
 
+    private int switchFrage;         //根据值的不同切换fragement
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         initView();
+        Intent intent=new Intent();
+        switchFrage=intent.getIntExtra("data_return",0);
+        Log.d("assfgg",""+switchFrage);
+        switchFragment(switchFrage);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        switchFragment(0);
     }
     private void initView(){
         //实例化组件
@@ -51,18 +56,6 @@ public class Main extends AppCompatActivity implements BottomNavigationView.OnNa
             }
         }
         return true;
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        switch (requestCode){
-            case 1:{
-                if(resultCode==RESULT_OK){
-                    int returnData=data.getIntExtra("data_return",0);
-                }
-                Toast.makeText(this,""+1,Toast.LENGTH_SHORT).show();
-                break;
-            }
-        }
     }
     private void switchFragment(int flag){
         //跳转Fragment
