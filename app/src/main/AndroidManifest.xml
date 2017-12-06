@@ -10,8 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".Activity.Main.Main">
+        <activity android:name=".Activity.Main.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.HomePage.HomePageNoteDetails" />
+        <activity android:name=".Activity.HomePage.HomePageAddNote" />
     </application>
 
 </manifest>

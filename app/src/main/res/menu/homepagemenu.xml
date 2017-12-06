@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title=""
+        android:orderInCategory="100"
+        android:icon="@drawable/homepage_search"
+        app:showAsAction="always"
+        android:id="@+id/homePageSearch"/>
+    <item
+        android:title=""
+        android:orderInCategory="100"
+        android:icon="@drawable/homepage_classify"
+        app:showAsAction="always"
+        android:id="@+id/homePageClassify"/>
+</menu>

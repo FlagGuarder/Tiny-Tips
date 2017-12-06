@@ -25,7 +25,7 @@ import java.util.List;
  * Created by cartoon on 2017/11/21.
  */
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
+public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     private List<Note> noteList;
 

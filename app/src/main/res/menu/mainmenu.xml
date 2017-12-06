@@ -8,12 +8,6 @@
         app:showAsAction="never"
         android:id="@+id/mainHomePage"/>
     <item
-        android:title=""
-        android:orderInCategory="100"
-        android:icon="@drawable/bottomnavigationview_addnote"
-        app:showAsAction="never"
-        android:id="@+id/mainAddNote"/>
-    <item
         android:title="我的"
         android:orderInCategory="100"
         android:icon="@drawable/bottomnavigationview_me"

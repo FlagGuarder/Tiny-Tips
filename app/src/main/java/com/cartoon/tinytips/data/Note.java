@@ -13,8 +13,8 @@ public class Note implements Serializable{
     private String title;           //标题
     private String  wordDetails;         //文字性内容
     private int imageDetails1;     //图像式内容1
-    private int imageDetails2;     //图像式内容3
-    private int imageDetails3;     //图像式内容2
+    private int imageDetails2;     //图像式内容2
+    private int imageDetails3;     //图像式内容3
     private String classify1;      //笔记的分类1
     private String classify2;      //笔记的分类2
     private String classify3;      //笔记的分类3
@@ -23,8 +23,8 @@ public class Note implements Serializable{
     private boolean isCollect;       //是否收藏
     private String author;           //笔记的发布人
     public Note
-            (String title,String wordDetails,int imageDetails1,int imageDetails2,
-             int imageDetails3,String classify1,String classify2,String classify3,String date,
+            (String title,String wordDetails,int imageDetails1,int imageDetails2,int imageDetails3,
+             String classify1,String classify2,String classify3,String date,
              boolean isCollect,String author){
         this.title=title;
         this.wordDetails=wordDetails;

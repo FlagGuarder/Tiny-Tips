@@ -10,7 +10,6 @@ android {
                             'src/main/res/layout/main',
                             'src/main/res/layout/homepage',
                             'src/main/res/layout/myaccount',
-                            'src/main/res/layout/addnote',
                             'src/main/res/layout',
                             'src/main/res'
                     ]

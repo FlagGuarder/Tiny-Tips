@@ -7,11 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.cartoon.tinytips.Activity.AddNote;
 import com.cartoon.tinytips.Activity.HomePage.HomePage;
 import com.cartoon.tinytips.Activity.MyAccount.MyAccount;
 import com.cartoon.tinytips.R;
@@ -30,7 +27,6 @@ public class Main extends AppCompatActivity implements BottomNavigationView.OnNa
         initView();
         Intent intent=new Intent();
         switchFrage=intent.getIntExtra("data_return",0);
-        Log.d("assfgg",""+switchFrage);
         switchFragment(switchFrage);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
@@ -46,12 +42,8 @@ public class Main extends AppCompatActivity implements BottomNavigationView.OnNa
                 switchFragment(0);
                 break;
             }
-            case R.id.mainAddNote:{
-                switchFragment(1);
-                break;
-            }
             case R.id.mainMe:{
-                switchFragment(2);
+                switchFragment(1);
                 break;
             }
         }
@@ -68,11 +60,6 @@ public class Main extends AppCompatActivity implements BottomNavigationView.OnNa
                 break;
             }
             case 1:{
-                AddNote addNote=new AddNote();
-                transaction.replace(R.id.mainFrame,addNote);
-                break;
-            }
-            case 2:{
                 MyAccount myAccount=new MyAccount();
                 transaction.replace(R.id.mainFrame,myAccount);
                 break;
