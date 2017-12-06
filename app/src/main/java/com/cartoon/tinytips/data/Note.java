@@ -22,22 +22,6 @@ public class Note implements Serializable{
 
     private boolean isCollect;       //是否收藏
     private String author;           //笔记的发布人
-    public Note
-            (String title,String wordDetails,int imageDetails1,int imageDetails2,int imageDetails3,
-             String classify1,String classify2,String classify3,String date,
-             boolean isCollect,String author){
-        this.title=title;
-        this.wordDetails=wordDetails;
-        this.imageDetails1=imageDetails1;
-        this.imageDetails2=imageDetails2;
-        this.imageDetails3=imageDetails3;
-        this.classify1=classify1;
-        this.classify2=classify2;
-        this.classify3=classify3;
-        this.date=date;
-        this.isCollect=isCollect;
-        this.author=author;
-    }
 
     public String getTitle() {
         return title;
@@ -75,7 +59,7 @@ public class Note implements Serializable{
         return date;
     }
 
-    public boolean isCollect() {
+    public boolean getCollect() {
         return isCollect;
     }
 

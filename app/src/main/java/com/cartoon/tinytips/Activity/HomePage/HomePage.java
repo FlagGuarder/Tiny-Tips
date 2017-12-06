@@ -77,13 +77,18 @@ public class HomePage extends Fragment implements View.OnClickListener{
     private void initNotes(){
         //初始化RecyclerView数据
         noteList.clear();
-        Note note=new Note("JAVA",
-                "输入输出流的操作",
-                R.drawable.apple,R.drawable.apple,R.drawable.apple,
-                "JAVA","InputStream","OutStream",
-                "2017年11月28日",
-                TRUE,
-                "cartoon");
+        Note note=new Note();
+        note.setTitle("JAVA");
+        note.setWordDetails("输入输出流的操作");
+        note.setImageDetails1(R.drawable.apple);
+        note.setImageDetails2(R.drawable.apple);
+        note.setImageDetails3(R.drawable.apple);
+        note.setClassify1("JAVA");
+        note.setClassify2("InputStream");
+        note.setClassify3("OutStream");
+        note.setDate("2017年11月28日");
+        note.setCollect(true);
+        note.setAuthor("cartoon");
         for(int i=0;i<20;i++){
             noteList.add(note);
         }
@@ -131,7 +136,6 @@ public class HomePage extends Fragment implements View.OnClickListener{
             case R.id.homePageAddNote:{
                 Intent intent=new Intent(getActivity(),HomePageAddNote.class);
                 getActivity().startActivity(intent);
-                Toast.makeText(view.getContext(),"asdf",Toast.LENGTH_SHORT).show();
                 break;
             }
         }
