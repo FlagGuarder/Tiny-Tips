@@ -95,6 +95,7 @@ public class HomePage extends Fragment implements View.OnClickListener{
     }
 
     public void onCreateOptionsMenu(Menu menu,MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.homepagemenu,menu);
     }
     private void refreshNotes(){
