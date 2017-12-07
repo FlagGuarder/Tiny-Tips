@@ -19,7 +19,6 @@ public class Note implements Serializable{
     private String classify2;      //笔记的分类2
     private String classify3;      //笔记的分类3
     private String date;           //笔记创建的日期
-
     private boolean isCollect;       //是否收藏
     private String author;           //笔记的发布人
 

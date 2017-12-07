@@ -34,7 +34,8 @@ import android.widget.Toast;
 
 import com.cartoon.tinytips.Activity.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.Util.LogUtil;
+import com.cartoon.tinytips.Util.Util.GetCurrentTime;
+import com.cartoon.tinytips.Util.Util.LogUtil;
 import com.cartoon.tinytips.data.Note;
 
 import java.io.File;
@@ -66,6 +67,7 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
     private Uri imageUri;           //上传的图片的Uri
 
     private Note note=new Note();          //输入的数据全都通过note的set方法存进类
+    private int flag=1;                   //根据具体的值选择显示图片
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,7 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(isShare.isChecked()){
-                    //当分享按钮被选中时
+                    //当分享按钮被选中时['
                     note.setCollect(true);
                 }
                 else{
@@ -104,15 +106,6 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         classify3=(TextView)findViewById(R.id.homePageAddNoteClassify3);
         isShare=(CheckBox)findViewById(R.id.homePageAddNoteIsShare);
         comfirm=(TextView)findViewById(R.id.homePageAddNoteComfirm);
-    }
-    private void getDataFromUI(){
-        note.setWordDetails(addWordDetails.getText().toString());
-        note.setImageDetails1(photo1.getId());
-        note.setImageDetails2(photo2.getId());
-        note.setImageDetails3(photo3.getId());
-        note.setClassify1(classify1.getText().toString());
-        note.setClassify2(classify2.getText().toString());
-        note.setClassify3(classify3.getText().toString());
     }
     @Override
     public void onClick(View v){
@@ -217,11 +210,26 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
             }
             case R.id.homePageAddNoteComfirm:{
                 getDataFromUI();
+                Toast.makeText(this,"保存成功",Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(HomePageAddNote.this, Main.class);
                 startActivity(intent);
+                finish();
                 break;
             }
         }
+    }
+    private void getDataFromUI(){
+        GetCurrentTime time=new GetCurrentTime();
+        note.setTitle(addTitle.getText().toString());
+        note.setWordDetails(addWordDetails.getText().toString());
+        note.setImageDetails1(photo1.getId());
+        note.setImageDetails2(photo2.getId());
+        note.setImageDetails3(photo3.getId());
+        note.setClassify1(classify1.getText().toString());
+        note.setClassify2(classify2.getText().toString());
+        note.setClassify3(classify3.getText().toString());
+        note.setDate(time.getCurrentTime());
+        note.setAuthor("cartoon");
     }
     @Override
     public void onBackPressed(){
@@ -237,8 +245,22 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
                 if (resultCode == RESULT_OK) {
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        photo1.setImageBitmap(bitmap);
-
+                        if(flag==1){
+                            photo1.setImageBitmap(bitmap);
+                            flag=2;
+                        }
+                        else{
+                            if(flag==2){
+                                photo2.setImageBitmap(bitmap);
+                                flag=3;
+                            }
+                            else{
+                                if(flag==3){
+                                    photo3.setImageBitmap(bitmap);
+                                    flag=1;
+                                }
+                            }
+                        }
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -315,7 +337,22 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         //选择图库中照片显示页面中
         if(imagePath!=null){
             Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
-            photo1.setImageBitmap(bitmap);
+            if(flag==1){
+                photo1.setImageBitmap(bitmap);
+                flag=2;
+            }
+            else{
+                if(flag==2){
+                    photo2.setImageBitmap(bitmap);
+                    flag=3;
+                }
+                else{
+                    if(flag==3){
+                        photo3.setImageBitmap(bitmap);
+                        flag=1;
+                    }
+                }
+            }
         }
         else{
             Toast.makeText(HomePageAddNote.this,"上传图片失败，请重试!",Toast.LENGTH_SHORT).show();

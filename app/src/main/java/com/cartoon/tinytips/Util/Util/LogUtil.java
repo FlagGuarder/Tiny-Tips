@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.Util;
+package com.cartoon.tinytips.Util.Util;
 
 import android.util.Log;
 

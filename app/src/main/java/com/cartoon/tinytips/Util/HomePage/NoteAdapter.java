@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,14 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.cartoon.tinytips.Activity.HomePage.HomePageAddNote;
 import com.cartoon.tinytips.Activity.HomePage.HomePageNoteDetails;
-import com.cartoon.tinytips.Activity.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.Util.GetContext;
+import com.cartoon.tinytips.Util.Util.GetContext;
 import com.cartoon.tinytips.data.Note;
 
 import java.util.List;
