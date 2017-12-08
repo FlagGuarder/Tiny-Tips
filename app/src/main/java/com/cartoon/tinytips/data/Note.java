@@ -12,9 +12,9 @@ public class Note implements Serializable{
     //笔记类
     private String title;           //标题
     private String  wordDetails;         //文字性内容
-    private int imageDetails1;     //图像式内容1
-    private int imageDetails2;     //图像式内容2
-    private int imageDetails3;     //图像式内容3
+    private String imageDetails1;     //图像式内容1
+    private String imageDetails2;     //图像式内容2
+    private String imageDetails3;     //图像式内容3
     private String classify1;      //笔记的分类1
     private String classify2;      //笔记的分类2
     private String classify3;      //笔记的分类3
@@ -30,15 +30,15 @@ public class Note implements Serializable{
         return wordDetails;
     }
 
-    public int getImageDetails1() {
+    public String getImageDetails1() {
         return imageDetails1;
     }
 
-    public int getImageDetails2() {
+    public String getImageDetails2() {
         return imageDetails2;
     }
 
-    public int getImageDetails3() {
+    public String getImageDetails3() {
         return imageDetails3;
     }
 
@@ -74,15 +74,15 @@ public class Note implements Serializable{
         this.wordDetails = wordDetails;
     }
 
-    public void setImageDetails1(int imageDetails1) {
+    public void setImageDetails1(String imageDetails1) {
         this.imageDetails1 = imageDetails1;
     }
 
-    public void setImageDetails2(int imageDetails2) {
+    public void setImageDetails2(String imageDetails2) {
         this.imageDetails2 = imageDetails2;
     }
 
-    public void setImageDetails3(int imageDetails3) {
+    public void setImageDetails3(String imageDetails3) {
         this.imageDetails3 = imageDetails3;
     }
 

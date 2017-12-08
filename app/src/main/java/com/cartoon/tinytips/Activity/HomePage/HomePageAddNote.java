@@ -68,6 +68,7 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
 
     private Note note=new Note();          //输入的数据全都通过note的set方法存进类
     private int flag=1;                   //根据具体的值选择显示图片
+    private String[] imageString={"","",""};     //将显示的图片转化成string进行存储
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(isShare.isChecked()){
-                    //当分享按钮被选中时['
+                    //当分享按钮被选中时
                     note.setCollect(true);
                 }
                 else{
@@ -222,9 +223,9 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         GetCurrentTime time=new GetCurrentTime();
         note.setTitle(addTitle.getText().toString());
         note.setWordDetails(addWordDetails.getText().toString());
-        note.setImageDetails1(photo1.getId());
-        note.setImageDetails2(photo2.getId());
-        note.setImageDetails3(photo3.getId());
+        note.setImageDetails1(imageString[0]);
+        note.setImageDetails2(imageString[1]);
+        note.setImageDetails3(imageString[2]);
         note.setClassify1(classify1.getText().toString());
         note.setClassify2(classify2.getText().toString());
         note.setClassify3(classify3.getText().toString());
@@ -247,16 +248,19 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                         if(flag==1){
                             photo1.setImageBitmap(bitmap);
+                            bitMapToString(0,bitmap);
                             flag=2;
                         }
                         else{
                             if(flag==2){
                                 photo2.setImageBitmap(bitmap);
+                                bitMapToString(1,bitmap);
                                 flag=3;
                             }
                             else{
                                 if(flag==3){
                                     photo3.setImageBitmap(bitmap);
+                                    bitMapToString(2,bitmap);
                                     flag=1;
                                 }
                             }
@@ -315,7 +319,6 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         }
         displayImage(imagePath); // 根据图片路径显示图片
     }
-
     private void handleImageBeforeKitKat(Intent data) {
         Uri uri = data.getData();
         String imagePath = getImagePath(uri, null);
@@ -339,16 +342,19 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
             Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
             if(flag==1){
                 photo1.setImageBitmap(bitmap);
+                bitMapToString(0,bitmap);
                 flag=2;
             }
             else{
                 if(flag==2){
                     photo2.setImageBitmap(bitmap);
+                    bitMapToString(1,bitmap);
                     flag=3;
                 }
                 else{
                     if(flag==3){
                         photo3.setImageBitmap(bitmap);
+                        bitMapToString(2,bitmap);
                         flag=1;
                     }
                 }
@@ -357,5 +363,8 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         else{
             Toast.makeText(HomePageAddNote.this,"上传图片失败，请重试!",Toast.LENGTH_SHORT).show();
         }
+    }
+    private void bitMapToString(int flag,Bitmap bitmap){
+        imageString[flag]=bitmap.toString();
     }
 }

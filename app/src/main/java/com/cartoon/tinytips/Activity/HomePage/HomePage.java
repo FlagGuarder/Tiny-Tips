@@ -78,9 +78,9 @@ public class HomePage extends Fragment implements View.OnClickListener{
         Note note=new Note();
         note.setTitle("JAVA");
         note.setWordDetails("输入输出流的操作");
-        note.setImageDetails1(R.drawable.apple);
-        note.setImageDetails2(R.drawable.apple);
-        note.setImageDetails3(R.drawable.apple);
+        note.setImageDetails1("");
+        note.setImageDetails2("");
+        note.setImageDetails3("");
         note.setClassify1("JAVA");
         note.setClassify2("InputStream");
         note.setClassify3("OutStream");
