@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,12 +29,15 @@ import java.util.List;
  */
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
+    //首页RecyclerView适配器
     //对recyclerView的item点击事件在onCreateViewHolder中的onClickListener(点击)以及onLongClickListener(长击)中处理
+    //在处理长击或者短击的处理还存在bug
+
     private List<Note> noteList;
 
     private Context context;
 
-    private Boolean isLongClick;     //判断点击是短击还是长击，长击isLongClick值为true，短击isLongClick值为false
+    private Boolean isLongClick=false;     //判断点击是短击还是长击，长击isLongClick值为true，短击isLongClick值为false
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View noteView;
@@ -76,7 +80,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             public void onClick(View view) {
                 if(isLongClick){
                     isLongClick=false;
-                    return;
                 }
                 else{
                     intentToNextActivity(holder);
@@ -113,9 +116,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
         Note note=noteList.get(position);
+        byte[] bytes= Base64.decode(note.getImageDetails1(),Base64.DEFAULT);
+        Bitmap bitmap=BitmapFactory.decodeByteArray(bytes,0,bytes.length);
         holder.title.setText(note.getTitle());
         holder.wordDetails.setText(note.getWordDetails());
-        Glide.with(context).load(note.getImageDetails1()).into(holder.imageDetails);
+        Glide.with(context).load(bitmap).into(holder.imageDetails);
         holder.classify1.setText(note.getClassify1());
         holder.classify2.setText(note.getClassify2());
         holder.classify3.setText(note.getClassify3());
@@ -130,6 +135,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         Note note=noteList.get(position);
         Intent intent=new Intent(GetContext.getContext(), HomePageNoteDetails.class);
         Activity activity=(Activity)context;
+        intent.putExtra("dataFromHomePage",note);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ((Activity) context).startActivity(intent);
         activity.finish();

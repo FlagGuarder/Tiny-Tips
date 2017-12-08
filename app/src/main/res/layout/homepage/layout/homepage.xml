@@ -47,8 +47,12 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/homePageAddNote"
-        android:layout_width="37dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="32dp" />
+        android:layout_margin="32dp"
+        app:elevation="8dp"
+        app:backgroundTint="#FFF"
+        app:rippleColor="#7ae3f9"
+        android:src="@drawable/homepageaddnote"/>
 </android.support.design.widget.CoordinatorLayout>

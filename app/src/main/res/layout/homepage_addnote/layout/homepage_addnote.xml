@@ -146,7 +146,7 @@
                     android:layout_weight="1.8"></LinearLayout>
 
                 <TextView
-                    android:id="@+id/homePageAddNoteComfirm"
+                    android:id="@+id/homePageAddNoteConfirm"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

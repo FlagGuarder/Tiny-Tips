@@ -18,16 +18,6 @@ public class PersonalInformation implements Serializable{
     private String school;       //高校
     private String sex;         //性别
     private String personalDecription;    //个人描述
-    public PersonalInformation
-            (String account,String password,String nickName,Image headPortrait,String school,String sex,String personalDecription){
-        this.account=account;
-        this.password=password;
-        this.nickName=nickName;
-        this.headPortrait=headPortrait;
-        this.school=school;
-        this.sex=sex;
-        this.personalDecription=personalDecription;
-    }
 
     public String getAccount() {
         return account;
