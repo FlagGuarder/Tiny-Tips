@@ -20,6 +20,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ import com.cartoon.tinytips.Activity.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.Util.Util.GetCurrentTime;
 import com.cartoon.tinytips.Util.Util.LogUtil;
+import com.cartoon.tinytips.Util.Util.StringAndBitmap;
 import com.cartoon.tinytips.data.Note;
 
 import java.io.ByteArrayOutputStream;
@@ -70,16 +72,19 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
 
     private Uri imageUri;           //上传的图片的Uri
 
-    private Note note=new Note();          //输入的数据全都通过note的set方法存进类
-    private int flagForChoosePhoto=1;                   //根据具体的值选择显示图片
+    private Note note;          //输入的数据全都通过note的set方法存进类
+    private int flagForChoosePhoto;                   //根据具体的值选择显示图片
     private String[] imageString={"","",""};     //将显示的图片转化成string进行存储
 
-    private int flagForChooseClassify=1;        //根据具体的值选择显示在UI的位置
+    private int flagForChooseClassify;        //根据具体的值选择显示在UI的位置
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage_addnote);
         initView();
+        note=new Note();
+        flagForChoosePhoto=1;
+        flagForChooseClassify=1;
         back.setOnClickListener(this);
         addPhoto.setOnClickListener(this);
         addClassify.setOnClickListener(this);
@@ -364,6 +369,7 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         note.setClassify3(classify3.getText().toString());
         note.setDate(time.getCurrentTime());
         note.setAuthor("cartoon");
+        LogUtil.d("asdf",note.getDate());
     }
     @Override
     public void onBackPressed(){
@@ -376,24 +382,25 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         switch (requestCode) {
             case 1: {
                 //使用摄像头进行上传图片回调函数
+                StringAndBitmap stringAndBitmap=new StringAndBitmap();
                 if (resultCode == RESULT_OK) {
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                         if(flagForChoosePhoto==1){
-                            Glide.with(this).load(bitmap).into(photo1);
-                            bitMapToString(0,bitmap);
+                            photo1.setImageBitmap(bitmap);
+                            imageString[0]=stringAndBitmap.bitmapToString(bitmap);
                             flagForChoosePhoto=2;
                         }
                         else{
                             if(flagForChoosePhoto==2){
-                                Glide.with(this).load(bitmap).into(photo2);
-                                bitMapToString(1,bitmap);
+                                photo2.setImageBitmap(bitmap);
+                                imageString[1]=stringAndBitmap.bitmapToString(bitmap);
                                 flagForChoosePhoto=3;
                             }
                             else{
                                 if(flagForChoosePhoto==3){
-                                    Glide.with(this).load(bitmap).into(photo3);
-                                    bitMapToString(2,bitmap);
+                                    photo3.setImageBitmap(bitmap);
+                                    imageString[2]=stringAndBitmap.bitmapToString(bitmap);
                                     flagForChoosePhoto=1;
                                 }
                             }
@@ -474,23 +481,24 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
     }
     private void displayImage(String imagePath){
         //选择图库中照片显示页面中
+        StringAndBitmap stringAndBitmap=new StringAndBitmap();
         if(imagePath!=null){
             Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
             if(flagForChoosePhoto==1){
-                Glide.with(this).load(bitmap).into(photo1);
-                bitMapToString(0,bitmap);
+                photo1.setImageBitmap(bitmap);
+                imageString[0]=stringAndBitmap.bitmapToString(bitmap);
                 flagForChoosePhoto=2;
             }
             else{
                 if(flagForChoosePhoto==2){
-                    Glide.with(this).load(bitmap).into(photo2);
-                    bitMapToString(1,bitmap);
+                    photo2.setImageBitmap(bitmap);
+                    imageString[1]=stringAndBitmap.bitmapToString(bitmap);
                     flagForChoosePhoto=3;
                 }
                 else{
                     if(flagForChoosePhoto==3){
-                        Glide.with(this).load(bitmap).into(photo3);
-                        bitMapToString(2,bitmap);
+                        photo3.setImageBitmap(bitmap);
+                        imageString[2]=stringAndBitmap.bitmapToString(bitmap);
                         flagForChoosePhoto=1;
                     }
                 }
@@ -499,12 +507,5 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         else{
             Toast.makeText(HomePageAddNote.this,"上传图片失败，请重试!",Toast.LENGTH_SHORT).show();
         }
-    }
-    private void bitMapToString(int flag,Bitmap bitmap){
-        //将Bitmap转换成String，存储在数据库中
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] bytes = stream.toByteArray();// 转为byte数组
-        imageString[flag]=Base64.encodeToString(bytes,Base64.DEFAULT);
     }
 }

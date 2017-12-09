@@ -7,8 +7,8 @@ import android.util.Log;
  */
 
 public class LogUtil {
-
     //调试工具类
+
     private static final int verbose=0;
     private static final int debug=1;
     private static final int info=2;

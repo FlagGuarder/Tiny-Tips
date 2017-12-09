@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.Activity.HomePage.HomePageNoteDetails;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.Util.Util.GetContext;
+import com.cartoon.tinytips.Util.Util.StringAndBitmap;
 import com.cartoon.tinytips.data.Note;
 
 import java.util.List;
@@ -116,11 +117,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
         Note note=noteList.get(position);
-        byte[] bytes= Base64.decode(note.getImageDetails1(),Base64.DEFAULT);
-        Bitmap bitmap=BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+        StringAndBitmap stringAndBitmap=new StringAndBitmap();
         holder.title.setText(note.getTitle());
         holder.wordDetails.setText(note.getWordDetails());
-        Glide.with(context).load(bitmap).into(holder.imageDetails);
+        holder.imageDetails.setImageBitmap(stringAndBitmap.stringToBitmap(note.getImageDetails1()));
         holder.classify1.setText(note.getClassify1());
         holder.classify2.setText(note.getClassify2());
         holder.classify3.setText(note.getClassify3());

@@ -20,16 +20,17 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
     //还差一个是否收藏按钮
 
     private TextView back;               //标题栏的返回按钮
-    private TextView title;
-    private TextView author;
-    private TextView date;
-    private TextView classify1;
-    private TextView classify2;
-    private TextView classify3;
-    private TextView wordDetails;
-    private ImageView imageView1;
-    private ImageView imageView2;
-    private ImageView imageView3;
+    private TextView save;               //标题栏的保存按钮
+    private TextView title;              //标题
+    private TextView author;             //作者
+    private TextView date;               //日期
+    private TextView classify1;          //分类1
+    private TextView classify2;          //分类2
+    private TextView classify3;          //分类3
+    private TextView wordDetails;        //文字性内容
+    private ImageView imageView1;        //图片1
+    private ImageView imageView2;        //图片2
+    private ImageView imageView3;        //图片3
 
     private Note noteFromHomePage;        //在首页点击后intent传递过来的对象
 
@@ -41,10 +42,12 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
         getDataFromHomePage();        //获取从首页传递下来的数据
         putDataToUI();                //将从首页获得的数据显示在UI上
         back.setOnClickListener(this);
+        save.setOnClickListener(this);
     }
     private void initView(){
         //控件实例化
         back=(TextView)findViewById(R.id.homePageNoteDetailsBack);
+        save=(TextView)findViewById(R.id.homePageNoteDetailsSave);
         title=(TextView)findViewById(R.id.homePageNoteDetailsTitle);
         author=(TextView)findViewById(R.id.homePageNoteDetailsAuthor);
         date=(TextView)findViewById(R.id.homePageNoteDetailsDate);
@@ -78,6 +81,9 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
                 Intent intent=new Intent( this,Main.class);
                 startActivity(intent);
                 finish();
+                break;
+            }
+            case R.id.homePageNoteDetailsSave:{
                 break;
             }
         }

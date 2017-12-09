@@ -7,6 +7,7 @@ import java.util.Calendar;
  */
 
 public class GetCurrentTime {
+    //获取当前时间
     private String year;
     private String month;
     private String day;
