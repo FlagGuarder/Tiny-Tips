@@ -138,8 +138,8 @@
                     android:layout_weight="1.2"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    android:text="是否允许分享"
-                    android:id="@+id/homePageAddNoteIsShare"/>
+                    android:text="是否收藏"
+                    android:id="@+id/homePageAddNoteIsCollect"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

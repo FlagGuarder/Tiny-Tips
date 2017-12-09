@@ -31,22 +31,41 @@
         android:layout_weight="12.3"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/homePageNoteDetailsTitle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="0.8"
-            android:text="asdfghjkkjhgfd"
-            android:textSize="22sp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
             android:orientation="horizontal">
 
+            <EditText
+                android:id="@+id/homePageNoteDetailsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:text="asdfghjkkjhgfd"
+                android:textSize="22sp"
+                android:editable="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:background="@drawable/homepage_note_details_iscollect"
+                android:id="@+id/homePageNoteDetailsCollect"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/homePageNoteDetailsAuthor"
                 android:layout_width="wrap_content"
@@ -66,16 +85,63 @@
                 android:gravity="center"
                 android:text="zxcvbn"
                 android:textSize="18sp" />
+        </LinearLayout>
 
+        <EditText
+            android:id="@+id/homePageNoteDetailsWordDetails"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="3"
+            android:background="@null"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:editable="false"  />
+
+        <ImageView
+            android:id="@+id/homePageNoteDetailsImage1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/apple" />
+
+        <ImageView
+            android:id="@+id/homePageNoteDetailsImage2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/apple" />
+
+        <ImageView
+            android:id="@+id/homePageNoteDetailsImage3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/apple"  />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/homePageNoteDetailsClassify1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="15dp"
                 android:gravity="center"
                 android:text="sdfghgfd"
                 android:textSize="18sp" />
-
             <TextView
                 android:id="@+id/homePageNoteDetailsClassify2"
                 android:layout_width="wrap_content"
@@ -84,7 +150,6 @@
                 android:gravity="center"
                 android:text="sdfghgfd"
                 android:textSize="18sp" />
-
             <TextView
                 android:id="@+id/homePageNoteDetailsClassify3"
                 android:layout_width="wrap_content"
@@ -94,39 +159,5 @@
                 android:text="sdfghgfd"
                 android:textSize="18sp" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/homePageNoteDetailsWordDetails"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="3"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/homePageNoteDetailsImage1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="2" />
-
-        <ImageView
-            android:id="@+id/homePageNoteDetailsImage2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="2" />
-
-        <ImageView
-            android:id="@+id/homePageNoteDetailsImage3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="2" />
     </LinearLayout>
 </LinearLayout>

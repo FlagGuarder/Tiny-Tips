@@ -48,7 +48,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class HomePageAddNote extends AppCompatActivity implements View.OnClickListener{
+public class HomePageAddNote extends AppCompatActivity implements View.OnClickListener,CompoundButton.OnCheckedChangeListener{
 
     //新建笔记页面
     //layout：homepage_addnote
@@ -67,40 +67,32 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
     private TextView classify1;      //classify1--classify3为选择的分类
     private TextView classify2;
     private TextView classify3;
-    private CheckBox isShare;            //选择是否允许分享
+    private CheckBox isCollect;            //选择是否收藏
     private TextView confirm;            //确定，储存输入信息
 
     private Uri imageUri;           //上传的图片的Uri
 
     private Note note;          //输入的数据全都通过note的set方法存进类
+
     private int flagForChoosePhoto;                   //根据具体的值选择显示图片
     private String[] imageString={"","",""};     //将显示的图片转化成string进行存储
+    private StringAndBitmap stringAndBitmap;
 
-    private int flagForChooseClassify;        //根据具体的值选择显示在UI的位置
+    private int flagForChooseClassify;        //根据具体的值选择分类显示在UI的位置
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage_addnote);
         initView();
         note=new Note();
+        stringAndBitmap=new StringAndBitmap();
         flagForChoosePhoto=1;
         flagForChooseClassify=1;
         back.setOnClickListener(this);
         addPhoto.setOnClickListener(this);
         addClassify.setOnClickListener(this);
         confirm.setOnClickListener(this);
-        isShare.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(isShare.isChecked()){
-                    //当分享按钮被选中时
-                    note.setCollect(true);
-                }
-                else{
-                    note.setCollect(false);
-                }
-            }
-        });
+        isCollect.setOnCheckedChangeListener(this);
     }
     private void initView(){
         //实例化控件
@@ -115,7 +107,7 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         classify1=(TextView)findViewById(R.id.homePageAddNoteClassify1);
         classify2=(TextView)findViewById(R.id.homePageAddNoteClassify2);
         classify3=(TextView)findViewById(R.id.homePageAddNoteClassify3);
-        isShare=(CheckBox)findViewById(R.id.homePageAddNoteIsShare);
+        isCollect=(CheckBox)findViewById(R.id.homePageAddNoteIsCollect);
         confirm=(TextView)findViewById(R.id.homePageAddNoteConfirm);
     }
     @Override
@@ -136,6 +128,21 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
             }
             case R.id.homePageAddNoteConfirm:{
                 handleClickConfirm();
+                break;
+            }
+        }
+    }
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton,boolean b){
+        //复选框等选项处理函数
+        switch (compoundButton.getId()){
+            case R.id.homePageAddNoteIsCollect:{
+                if(isCollect.isChecked()){
+                    note.setCollect(true);
+                }
+                else{
+                    note.setCollect(false);
+                }
                 break;
             }
         }
@@ -369,7 +376,6 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         note.setClassify3(classify3.getText().toString());
         note.setDate(time.getCurrentTime());
         note.setAuthor("cartoon");
-        LogUtil.d("asdf",note.getDate());
     }
     @Override
     public void onBackPressed(){
@@ -382,7 +388,6 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         switch (requestCode) {
             case 1: {
                 //使用摄像头进行上传图片回调函数
-                StringAndBitmap stringAndBitmap=new StringAndBitmap();
                 if (resultCode == RESULT_OK) {
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
@@ -481,7 +486,6 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
     }
     private void displayImage(String imagePath){
         //选择图库中照片显示页面中
-        StringAndBitmap stringAndBitmap=new StringAndBitmap();
         if(imagePath!=null){
             Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
             if(flagForChoosePhoto==1){

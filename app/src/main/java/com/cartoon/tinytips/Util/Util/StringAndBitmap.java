@@ -15,9 +15,14 @@ public class StringAndBitmap {
     private Bitmap bitmap;
     private String string;
     public Bitmap stringToBitmap(String string){
-        byte[] bytes= Base64.decode(string,Base64.DEFAULT);
-        bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-        return bitmap;
+        if(!string.equals("")){
+            byte[] bytes= Base64.decode(string,Base64.DEFAULT);
+            bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+            return bitmap;
+        }
+        else {
+            return null;
+        }
     }
     public String bitmapToString(Bitmap bitmap){
         ByteArrayOutputStream stream = new ByteArrayOutputStream();

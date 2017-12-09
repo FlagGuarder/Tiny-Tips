@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--主页新增笔记上传图片弹出窗口-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DCDCDC">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFF"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="拍照"
+        android:textSize="20sp"
+        android:id="@+id/homePageNoteDetailsTakePhotoFromCamera"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFF"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="从相册选取"
+        android:textSize="20sp"
+        android:id="@+id/homePageNoteDetailsTakePhotoFromAlbum"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFF"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="取消"
+        android:textSize="20sp"
+        android:id="@+id/homePageNoteDetailsTakePhotoCancel"/>
+</LinearLayout>

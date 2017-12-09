@@ -28,7 +28,6 @@ public class HomePage extends Fragment implements View.OnClickListener{
     //layout:homepage
     //将数据传进noteList即可实现RecyclerView数据的更新
     //RecyclerView的点击事件在NoteAdapter进行处理
-    //搜索与分类按钮的点击事件在onOptionsItemSelected中处理
 
     private View view;
 
@@ -116,8 +115,7 @@ public class HomePage extends Fragment implements View.OnClickListener{
     public void onClick(View view){
         switch (view.getId()){
             case R.id.homePageAddNote:{
-                Intent intent=new Intent(getActivity(),HomePageAddNote.class);
-                getActivity().startActivity(intent);
+                handleClickAddNote();
                 break;
             }
             case R.id.homePageSearch:{
@@ -127,5 +125,11 @@ public class HomePage extends Fragment implements View.OnClickListener{
                 break;
             }
         }
+    }
+    private void handleClickAddNote(){
+        //点击新增笔记具体逻辑
+        Intent intent=new Intent(getActivity(),HomePageAddNote.class);
+        getActivity().startActivity(intent);
+        getActivity().finish();
     }
 }
