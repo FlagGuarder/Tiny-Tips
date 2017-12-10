@@ -265,64 +265,70 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         addClassify1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(flagForChooseClassify==1){
-                    classify1.setText(addClassify1.getText().toString());
-                    flagForChooseClassify=2;
-                }
-                else{
-                    if(flagForChooseClassify==2){
+                switch (flagForChooseClassify){
+                    case 1:{
+                        classify1.setText(addClassify1.getText().toString());
+                        flagForChooseClassify=2;
+                        break;
+                    }
+                    case 2:{
                         classify2.setText(addClassify1.getText().toString());
                         flagForChooseClassify=3;
+                        break;
                     }
-                    else{
-                        if(flagForChooseClassify==3){
-                            classify3.setText(addClassify1.getText());
-                            flagForChooseClassify=1;
-                        }
+                    case 3:{
+                        classify3.setText(addClassify1.getText().toString());
+                        flagForChooseClassify=1;
+                        break;
                     }
                 }
+                addClassify.cancel();
             }
         });
         addClassify2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(flagForChooseClassify==1){
-                    classify1.setText(addClassify2.getText().toString());
-                    flagForChooseClassify=2;
-                }
-                else{
-                    if(flagForChooseClassify==2){
-                        classify2.setText(addClassify2.getText().toString());
+                switch (flagForChooseClassify){
+                    case 1:{
+                        classify1.setText(addClassify1.getText().toString());
+                        flagForChooseClassify=2;
+                        break;
+                    }
+                    case 2:{
+                        classify2.setText(addClassify1.getText().toString());
                         flagForChooseClassify=3;
+                        break;
                     }
-                    else{
-                        if(flagForChooseClassify==3){
-                            classify3.setText(addClassify2.getText().toString());
-                            flagForChooseClassify=1;
-                        }
+                    case 3:{
+                        classify3.setText(addClassify1.getText().toString());
+                        flagForChooseClassify=1;
+                        break;
                     }
                 }
+                addClassify.cancel();
             }
         });
         addClassify3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if(flagForChooseClassify==1){
-                    classify1.setText(addClassify3.getText().toString());
-                    flagForChooseClassify=2;
-                }
-                else{
-                    if(flagForChooseClassify==2){
-                        classify2.setText(addClassify3.getText().toString());
+                switch (flagForChooseClassify){
+                    case 1:{
+                        classify1.setText(addClassify1.getText().toString());
+                        flagForChooseClassify=2;
+                        break;
+                    }
+                    case 2:{
+                        classify2.setText(addClassify1.getText().toString());
                         flagForChooseClassify=3;
+                        break;
                     }
-                    else{
-                        if(flagForChooseClassify==3){
-                            classify3.setText(addClassify3.getText().toString());
-                            flagForChooseClassify=1;
-                        }
+                    case 3:{
+                        classify3.setText(addClassify1.getText().toString());
+                        flagForChooseClassify=1;
+                        break;
                     }
                 }
+                addClassify.cancel();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -334,20 +340,21 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(flagForChooseClassify==1){
-                    classify1.setText(newClassfy.getText().toString());
-                    flagForChooseClassify=2;
-                }
-                else{
-                    if(flagForChooseClassify==2){
+                switch (flagForChooseClassify){
+                    case 1:{
+                        classify1.setText(newClassfy.getText().toString());
+                        flagForChooseClassify=2;
+                        break;
+                    }
+                    case 2:{
                         classify2.setText(newClassfy.getText().toString());
                         flagForChooseClassify=3;
+                        break;
                     }
-                    else{
-                        if(flagForChooseClassify==3){
-                            classify3.setText(newClassfy.getText().toString());
-                            flagForChooseClassify=1;
-                        }
+                    case 3:{
+                        classify3.setText(newClassfy.getText().toString());
+                        flagForChooseClassify=1;
+                        break;
                     }
                 }
                 Toast.makeText(HomePageAddNote.this,"新建成功！",Toast.LENGTH_SHORT).show();
@@ -488,23 +495,24 @@ public class HomePageAddNote extends AppCompatActivity implements View.OnClickLi
         //选择图库中照片显示页面中
         if(imagePath!=null){
             Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
-            if(flagForChoosePhoto==1){
-                photo1.setImageBitmap(bitmap);
-                imageString[0]=stringAndBitmap.bitmapToString(bitmap);
-                flagForChoosePhoto=2;
-            }
-            else{
-                if(flagForChoosePhoto==2){
+            switch (flagForChoosePhoto){
+                case 1:{
+                    photo1.setImageBitmap(bitmap);
+                    imageString[0]=stringAndBitmap.bitmapToString(bitmap);
+                    flagForChoosePhoto=2;
+                    break;
+                }
+                case 2:{
                     photo2.setImageBitmap(bitmap);
                     imageString[1]=stringAndBitmap.bitmapToString(bitmap);
                     flagForChoosePhoto=3;
+                    break;
                 }
-                else{
-                    if(flagForChoosePhoto==3){
-                        photo3.setImageBitmap(bitmap);
-                        imageString[2]=stringAndBitmap.bitmapToString(bitmap);
-                        flagForChoosePhoto=1;
-                    }
+                case 3:{
+                    photo3.setImageBitmap(bitmap);
+                    imageString[2]=stringAndBitmap.bitmapToString(bitmap);
+                    flagForChoosePhoto=1;
+                    break;
                 }
             }
         }

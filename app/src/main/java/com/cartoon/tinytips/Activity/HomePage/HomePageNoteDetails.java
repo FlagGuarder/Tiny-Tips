@@ -27,7 +27,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -73,6 +72,8 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
     private String[] imageString={"","",""};     //将显示的图片转化成string进行存储
     private int flagForChoosePhoto;                   //根据具体的值选择显示图片
 
+    private int flagForChooseClassify;        //根据具体的值选择分类显示在UI的位置
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +82,8 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
         noteFromHomePage=new Note();
         note=new Note();
         stringAndBitmap=new StringAndBitmap();
+        flagForChoosePhoto=1;
+        flagForChooseClassify=1;
         getDataFromHomePage();        //获取从首页传递下来的数据
         putDataToUI();                //将从首页获得的数据显示在UI上
         back.setOnClickListener(this);
@@ -169,12 +172,15 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
                 break;
             }
             case R.id.homePageNoteDetailsClassify1:{
+                handleClickClassify(1);
                 break;
             }
             case R.id.homePageNoteDetailsClassify2:{
+                handleClickClassify(2);
                 break;
             }
             case R.id.homePageNoteDetailsClassify3:{
+                handleClickClassify(3);
                 break;
             }
         }
@@ -208,14 +214,15 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
         bitmap[2]=((BitmapDrawable)imageView3.getDrawable()).getBitmap();
         note.setTitle(title.getText().toString());
         note.setWordDetails(wordDetails.getText().toString());
-        note.setImageDetails1(stringAndBitmap.bitmapToString(bitmap[0]));
-        note.setImageDetails2(stringAndBitmap.bitmapToString(bitmap[1]));
-        note.setImageDetails3(stringAndBitmap.bitmapToString(bitmap[2]));
+       //note.setImageDetails1(stringAndBitmap.bitmapToString(bitmap[0]));
+        //note.setImageDetails2(stringAndBitmap.bitmapToString(bitmap[1]));
+       // note.setImageDetails3(stringAndBitmap.bitmapToString(bitmap[2]));
         note.setClassify1(classify1.getText().toString());
         note.setClassify2(classify2.getText().toString());
         note.setClassify3(classify3.getText().toString());
         note.setDate(date.getText().toString());
         note.setAuthor(author.getText().toString());
+        Toast.makeText(this,"保存成功",Toast.LENGTH_SHORT).show();
     }
     private void handleClickTitle(){
         //点击标题具体处理逻辑
@@ -232,7 +239,7 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
     private void handleClickImage(int flag){
         //点击图片后处理具体逻辑
         final LayoutInflater inflater=LayoutInflater.from(this);
-        final View view= inflater.inflate(R.layout.homepage_note_details_takephoto,null);
+        final View view= inflater.inflate(R.layout.homepage_note_details_changephoto,null);
         final TextView camera=(TextView)view.findViewById(R.id.homePageNoteDetailsTakePhotoFromCamera);
         final TextView album=(TextView)view.findViewById(R.id.homePageNoteDetailsTakePhotoFromAlbum);
         final TextView cancel=(TextView)view.findViewById(R.id.homePageNoteDetailsTakePhotoCancel);
@@ -297,6 +304,109 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
         });
         flagForChoosePhoto=flag;
     }
+    private void handleClickClassify(final int flag){
+        //点击分类后处理具体逻辑
+        final LayoutInflater inflater=LayoutInflater.from(this);
+        final View view= inflater.inflate(R.layout.homepage_note_details_changeclassify,null);
+        final TextView refresh=(TextView)view.findViewById(R.id.homePageNoteDetailsChangeClassifyRefresh);
+        final TextView changeClassify1=(TextView) view.findViewById(R.id.homePageNoteDetailsChangeClassify1);
+        final TextView changeClassify2=(TextView) view.findViewById(R.id.homePageNoteDetailsChangeClassify2);
+        final TextView changeClassify3=(TextView) view.findViewById(R.id.homePageNoteDetailsChangeClassify3);
+        final EditText newClassfy=(EditText)view.findViewById(R.id.homePageNoteDetailsChangeClassifyNewClassify);
+        final TextView cancel=(TextView)view.findViewById(R.id.homePageNoteDetailsChangeClassifyCancel);
+        final TextView confirm=(TextView)view.findViewById(R.id.homePageNoteDetailsChangeClassifyConfirm);
+        final AlertDialog changeClassify=new AlertDialog.Builder(this).create();
+        changeClassify.setView(view);
+        changeClassify.setCancelable(true);
+        changeClassify.show();
+        changeClassify1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (flag){
+                    case 1:{
+                        classify1.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                    case 2:{
+                        classify2.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                    case 3:{
+                        classify3.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                }
+                changeClassify.cancel();
+            }
+        });
+        changeClassify2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (flag){
+                    case 1:{
+                        classify1.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                    case 2:{
+                        classify2.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                    case 3:{
+                        classify3.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                }
+                changeClassify.cancel();
+            }
+        });
+        changeClassify3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                switch (flag){
+                    case 1:{
+                        classify1.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                    case 2:{
+                        classify2.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                    case 3:{
+                        classify3.setText(changeClassify1.getText().toString());
+                        break;
+                    }
+                }
+                changeClassify.cancel();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeClassify.cancel();
+            }
+        });
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (flag){
+                    case 1:{
+                        classify1.setText(newClassfy.getText().toString());
+                        break;
+                    }
+                    case 2:{
+                        classify2.setText(newClassfy.getText().toString());
+                        break;
+                    }
+                    case 3:{
+                        classify3.setText(newClassfy.getText().toString());
+                        break;
+                    }
+                }
+                Toast.makeText(HomePageNoteDetails.this,"新建成功！",Toast.LENGTH_SHORT).show();
+                changeClassify.cancel();
+            }
+        });
+    }
     @Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data){
         switch (requestCode) {
@@ -308,19 +418,16 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
                         if(flagForChoosePhoto==1){
                             imageView1.setImageBitmap(bitmap);
                             imageString[0]=stringAndBitmap.bitmapToString(bitmap);
-                            flagForChoosePhoto=2;
                         }
                         else{
                             if(flagForChoosePhoto==2){
                                 imageView2.setImageBitmap(bitmap);
                                 imageString[1]=stringAndBitmap.bitmapToString(bitmap);
-                                flagForChoosePhoto=3;
                             }
                             else{
                                 if(flagForChoosePhoto==3){
                                     imageView3.setImageBitmap(bitmap);
                                     imageString[2]=stringAndBitmap.bitmapToString(bitmap);
-                                    flagForChoosePhoto=1;
                                 }
                             }
                         }
@@ -402,23 +509,21 @@ public class HomePageNoteDetails extends AppCompatActivity implements View.OnCli
         //选择图库中照片显示页面中
         if(imagePath!=null){
             Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
-            if(flagForChoosePhoto==1){
-                imageView1.setImageBitmap(bitmap);
-                imageString[0]=stringAndBitmap.bitmapToString(bitmap);
-                flagForChoosePhoto=2;
-            }
-            else{
-                if(flagForChoosePhoto==2){
+            switch (flagForChoosePhoto){
+                case 1:{
+                    imageView1.setImageBitmap(bitmap);
+                    imageString[0]=stringAndBitmap.bitmapToString(bitmap);
+                    break;
+                }
+                case 2:{
                     imageView2.setImageBitmap(bitmap);
                     imageString[1]=stringAndBitmap.bitmapToString(bitmap);
-                    flagForChoosePhoto=3;
+                    break;
                 }
-                else{
-                    if(flagForChoosePhoto==3){
-                        imageView3.setImageBitmap(bitmap);
-                        imageString[2]=stringAndBitmap.bitmapToString(bitmap);
-                        flagForChoosePhoto=1;
-                    }
+                case 3:{
+                    imageView3.setImageBitmap(bitmap);
+                    imageString[2]=stringAndBitmap.bitmapToString(bitmap);
+                    break;
                 }
             }
         }

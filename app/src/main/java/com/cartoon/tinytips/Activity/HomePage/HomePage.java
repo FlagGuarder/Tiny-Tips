@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.Util.HomePage.NoteAdapter;
@@ -119,9 +122,11 @@ public class HomePage extends Fragment implements View.OnClickListener{
                 break;
             }
             case R.id.homePageSearch:{
+                handleClickSearch();
                 break;
             }
             case R.id.homePageClassify:{
+                handleClickClassify();
                 break;
             }
         }
@@ -131,5 +136,25 @@ public class HomePage extends Fragment implements View.OnClickListener{
         Intent intent=new Intent(getActivity(),HomePageAddNote.class);
         getActivity().startActivity(intent);
         getActivity().finish();
+    }
+    private void handleClickSearch(){
+        //点击搜索具体逻辑
+        changeNotes(1);
+    }
+    private void handleClickClassify(){
+        //点击分类具体逻辑
+        changeNotes(2);
+    }
+    private void changeNotes(int flag){
+        //当flag=1为查询操作，当flag=2为筛选操作
+        final LayoutInflater inflater=LayoutInflater.from(getActivity());
+        final View view= inflater.inflate(R.layout.homepage_inputcondition,null);
+        final EditText input=(EditText)view.findViewById(R.id.homePageInputConditionInput);
+        final TextView cancel=(TextView)view.findViewById(R.id.homePageInputConditionCancel);
+        final TextView confirm=(TextView)view.findViewById(R.id.homePageInputConditionConfirm);
+        final AlertDialog inputCondition=new AlertDialog.Builder(getActivity()).create();
+        inputCondition.setView(view);
+        inputCondition.setCancelable(true);
+        inputCondition.show();
     }
 }
